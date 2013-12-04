@@ -7,15 +7,15 @@ A  = [_A-Za-z]
 Rules.
 
 {D}+ :
-    {token,{integer,TokenLine,list_to_integer(TokenChars)}}.
+    {token,{integer,list_to_integer(TokenChars)}}.
 
 {D}+\.{D}+((E|e)(\+|\-)?{D}+)? :
-                {token,{float,TokenLine,list_to_float(TokenChars)}}.
+                {token,{float,list_to_float(TokenChars)}}.
 {A}+ :
-                {token,{symbol,TokenLine,list_to_atom(TokenChars)}}.
+                {token,{symbol,list_to_atom(TokenChars)}}.
 [\*+-/\(\)] :
-                {token,{TokenChars,TokenLine}}.
-
+                {token,{TokenChars}}.
+[\n]        : skip_token.
 [\000-\s]+  : skip_token.
 
 Erlang code.
